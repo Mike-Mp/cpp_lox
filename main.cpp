@@ -5,6 +5,8 @@
 #include <sstream>
 #include <string>
 
+#include "scanner.h"
+
 class Lox {
 public:
   static bool hadError;
@@ -51,7 +53,7 @@ public:
 
 private:
   static void run(std::string source) {
-    // Scanner scanner = Scanner{};
+    Scanner scanner = Scanner{source};
     // List<Token> tokens = scanner.scanTokens();
     // for (Token token : tokens) {
     //   std::cout >> token;
@@ -60,12 +62,12 @@ private:
 
   static void report(int line, std::string where, std::string message) {
     std::cout << "[line " << line << "] Error" << where << ": " << message;
-    // hadError = true;
+    hadError = true;
   }
 };
 
 int main(int argc, char *argv[]) {
-  // std::cout << argc;
+  std::cout << argc;
   if (argc > 2) {
     std::cout << "Usage: clox [script]";
     exit(64);

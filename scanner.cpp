@@ -165,7 +165,8 @@ private:
   }
 
   char peekNext() {
-    if (current + 1 >= source.length()) return '\0';
-    return source[current+1];
+    if (current + 1 >= source.length())
+      return '\0';
+    return source[current + 1];
   }
 };
