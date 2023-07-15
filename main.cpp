@@ -9,7 +9,7 @@ class Lox {
 public:
   static bool hadError;
 
-  void error(int line, std::string message) { report(line, "", message); }
+  static void error(int line, std::string message) { report(line, "", message); }
 
   static void runFile(const std::string &path) {
     std::ifstream file{path};
