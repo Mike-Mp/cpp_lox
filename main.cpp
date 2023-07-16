@@ -27,9 +27,7 @@ public:
     std::stringstream buffer;
     buffer << file.rdbuf();
     std::string fileContent = buffer.str();
-    std::cout << "Hello";
-    std::cout << fileContent;
-    hadError = true;
+    hadError = false;
     run(fileContent);
 
     if (hadError) exit(65);
@@ -54,10 +52,11 @@ public:
 private:
   static void run(std::string source) {
     Scanner scanner = Scanner{source};
-    // List<Token> tokens = scanner.scanTokens();
-    // for (Token token : tokens) {
-    //   std::cout >> token;
-    // }
+    std::vector<Token> tokens = scanner.scanTokens();
+
+    for (Token token : tokens) {
+      std::cout << token.toString();
+    }
   }
 
   static void report(int line, std::string where, std::string message) {
