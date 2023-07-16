@@ -1,9 +1,9 @@
-
-#include "tokenType.h"
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <variant>
+
+#include "../include/tokenType.h"
 
 using std::string;
 

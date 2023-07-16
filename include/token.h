@@ -1,3 +1,6 @@
+#ifndef TOKEN_H
+#define TOKEN_H
+
 #include "tokenType.h"
 #include <variant>
 
@@ -14,3 +17,5 @@ public:
 
   std::string toString();
 };
+
+#endif
