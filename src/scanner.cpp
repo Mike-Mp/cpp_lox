@@ -156,8 +156,7 @@ void Scanner::number() {
       advance();
   }
 
-  std::string numberStr = source.substr(start, current - start);
-  double numberValue = std::stod(numberStr);
+  double numberValue = std::stod(source.substr(start, current - start));
   addToken(NUMBER, numberValue);
 }
 
