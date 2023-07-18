@@ -4,6 +4,7 @@
 #include "token.h"
 #include "tokenType.h"
 #include <cmath>
+#include <unordered_map>
 #include <vector>
 
 class Scanner {
@@ -15,14 +16,20 @@ public:
 
   std::vector<Token> scanTokens();
 
+  static std::unordered_map<std::string, TokenType> initializeKeywords();
+
 private:
   int start;
   int current;
   int line;
 
+  static const std::unordered_map<std::string, TokenType> keywords;
+
   bool isAtEnd();
 
   void scanToken();
+
+  void identifier();
 
   void string();
 
@@ -41,6 +48,10 @@ private:
   void number();
 
   char peekNext();
+
+  bool isAlpha(char c);
+
+  bool isAlphaNumeric(char c);
 };
 
 #endif
