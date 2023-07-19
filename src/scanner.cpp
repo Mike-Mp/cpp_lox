@@ -21,27 +21,24 @@ std::vector<Token> Scanner::scanTokens() {
   return tokens;
 }
 
-std::unordered_map<std::string, TokenType> Scanner::initializeKeywords() {
-  std::unordered_map<std::string, TokenType> keywords;
-
-  keywords.emplace("and", AND);
-  keywords.emplace("class", CLASS);
-  keywords.emplace("else", ELSE);
-  keywords.emplace("false", FALSE);
-  keywords.emplace("for", FOR);
-  keywords.emplace("fun", FUN);
-  keywords.emplace("if", IF);
-  keywords.emplace("nil", NIL);
-  keywords.emplace("or", OR);
-  keywords.emplace("print", PRINT);
-  keywords.emplace("return", RETURN);
-  keywords.emplace("super", SUPER);
-  keywords.emplace("this", THIS);
-  keywords.emplace("true", TRUE);
-  keywords.emplace("var", VAR);
-  keywords.emplace("while", WHILE);
-  return keywords;
-}
+std::unordered_map<std::string, TokenType> Scanner::keywords = {
+   {"and", AND},
+    {"class", CLASS},
+    {"else", ELSE},
+    {"false", FALSE},
+    {"for", FOR},
+    {"fun", FUN},
+    {"if", IF},
+    {"nil", NIL},
+    {"or", OR},
+    {"print", PRINT},
+    {"return", RETURN},
+    {"super", SUPER},
+    {"this", THIS},
+    {"true", TRUE},
+    {"var", VAR},
+    {"while", WHILE}
+};
 
 bool Scanner::isAtEnd() { return current >= source.length(); }
 
@@ -127,9 +124,9 @@ void Scanner::identifier() {
 
   addToken(IDENTIFIER);
   std::string text = source.substr(start, current);
-  auto it = keywords.find(text);
+  auto it = Scanner::keywords.find(text);
 
-  TokenType type = (it != keywords.end()) ? it->second : IDENTIFIER;
+  TokenType type = (it != Scanner::keywords.end()) ? it->second : IDENTIFIER;
   addToken(type);
 }
 

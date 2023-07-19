@@ -16,14 +16,12 @@ public:
 
   std::vector<Token> scanTokens();
 
-  static std::unordered_map<std::string, TokenType> initializeKeywords();
-
 private:
-  int start;
-  int current;
+  unsigned int start;
+  unsigned int current;
   int line;
 
-  static const std::unordered_map<std::string, TokenType> keywords;
+  static std::unordered_map<std::string, TokenType> keywords;
 
   bool isAtEnd();
 
